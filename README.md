@@ -1,3 +1,9 @@
-# React + Vite
+# Messaging App React Frontend
 
-Title
+- React
+- Vite
+- React Router
+- Vitest
+- CSS Modules
+
+Backend project available at https://github.com/See-Monkey/messenger-backend
