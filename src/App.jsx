@@ -1,14 +1,13 @@
 import { Outlet } from "react-router";
-import Header from "./components/Header/Header.jsx";
+import "./app.css";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
 	return (
-		<>
-			<Header />
-			<main>
-				<Outlet />
-			</main>
-		</>
+		<main>
+			<Navbar />
+			<Outlet />
+		</main>
 	);
 }
 
