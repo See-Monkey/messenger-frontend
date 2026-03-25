@@ -4,6 +4,7 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute.jsx";
 
 import Home from "../pages/Home/Home.jsx";
 import Login from "../pages/Login/Login.jsx";
+import Register from "../pages/Register/Register.jsx";
 import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "login", element: <Login /> },
+			{ path: "register", element: <Register /> },
 		],
 	},
 ]);

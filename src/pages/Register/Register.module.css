@@ -1,0 +1,69 @@
+.registerSection {
+	align-self: stretch;
+	width: 100%;
+	max-width: 1200px;
+	background-image: url("../../images/simone-millward-63jNOgMAa0g-unsplash.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Roboto", sans-serif;
+}
+
+.registerForm {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 12px;
+	padding: 20px;
+
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(10px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.registerHeader {
+	align-self: center;
+}
+
+.registerForm label {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.registerForm input {
+	background-color: var(--white);
+	border: 1px solid var(--steel);
+	border-radius: 4px;
+	padding: 6px 12px;
+}
+
+.registerBtn {
+	margin-top: 20px;
+	align-self: center;
+	height: 40px;
+	padding: 0 30px;
+	border-radius: 20px;
+	border: 1px solid var(--emerald);
+	background-color: var(--teal);
+	color: var(--platinum);
+	box-shadow: 2px 2px 3px var(--carbon);
+	cursor: pointer;
+
+	transform-origin: center;
+	transition: transform 0.25s ease-out;
+}
+
+.registerBtn:hover {
+	background-color: var(--cerulean);
+
+	transform: scale(1.05);
+	transition:
+		transform 0.12s ease-out,
+		background-color 0.12s ease-out;
+}
