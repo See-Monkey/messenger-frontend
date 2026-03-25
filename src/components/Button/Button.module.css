@@ -1,0 +1,62 @@
+.button {
+	border: none;
+	border-radius: 9999px;
+	cursor: pointer;
+	font-weight: 500;
+
+	transform-origin: bottom center;
+	transition: all 0.25s ease-in;
+}
+
+.button:hover {
+	transform: scale(1.05);
+	transition: all 0.12s ease-out;
+}
+
+/*===== Variants =====*/
+.primary {
+	background-color: var(--carbon);
+	color: var(--white);
+	border: 2px solid var(--theme);
+}
+
+.primary:hover:not(.disabled) {
+	background-color: var(--theme);
+	color: var(--black);
+}
+
+.secondary {
+	background-color: var(--theme);
+	color: var(--black);
+}
+
+.secondary:hover:not(.disabled) {
+	background-color: var(--theme-lighten);
+	border: 2px solid var(--theme);
+}
+
+/*===== Sizes =====*/
+.sm {
+	padding: 4px 8px;
+	font-size: 0.875rem;
+}
+
+.md {
+	padding: 8px 16px;
+	font-size: 1rem;
+}
+
+.lg {
+	padding: 12px 20px;
+	font-size: 1.125rem;
+}
+
+/*===== States =====*/
+.disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.loading {
+	cursor: wait;
+}

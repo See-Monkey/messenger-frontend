@@ -26,6 +26,9 @@
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
+	--theme: #14e12e;
+	--theme-darken: rgb(10, 120, 20);
+	--theme-lighten: rgb(100, 240, 120);
 }
 
 main {

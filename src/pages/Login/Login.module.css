@@ -8,7 +8,7 @@
 	background-position: center;
 	display: flex;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	font-family: "Roboto", sans-serif;
 }
 
@@ -18,7 +18,6 @@
 	align-items: flex-end;
 	gap: 12px;
 	padding: 20px;
-	margin-top: 30px;
 
 	background: rgba(255, 255, 255, 0.2);
 	backdrop-filter: blur(10px);
@@ -45,26 +44,6 @@
 }
 
 .loginBtn {
-	margin-top: 20px;
 	align-self: center;
-	height: 40px;
-	padding: 0 30px;
-	border-radius: 20px;
-	border: 1px solid var(--emerald);
-	background-color: var(--teal);
-	color: var(--platinum);
-	box-shadow: 2px 2px 3px var(--carbon);
-	cursor: pointer;
-
-	transform-origin: center;
-	transition: transform 0.25s ease-out;
-}
-
-.loginBtn:hover {
-	background-color: var(--cerulean);
-
-	transform: scale(1.05);
-	transition:
-		transform 0.12s ease-out,
-		background-color 0.12s ease-out;
+	margin-top: 20px;
 }

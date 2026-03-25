@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/useAuth.js";
 import { useNavigate } from "react-router";
 import styles from "./Login.module.css";
+import Button from "../../components/Button/Button.jsx";
 
 export default function Login() {
 	const { login } = useAuth();
@@ -59,9 +60,10 @@ export default function Login() {
 						onChange={handleChange}
 					/>
 				</label>
-				<button type="submit" className={styles.loginBtn}>
+
+				<Button type="submit" className={styles.loginBtn} variant="secondary">
 					Login
-				</button>
+				</Button>
 			</form>
 		</section>
 	);

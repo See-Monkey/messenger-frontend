@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../../context/useAuth.js";
 import { useNavigate } from "react-router";
 import styles from "./Register.module.css";
+import Button from "../../components/Button/Button.jsx";
 
 export default function Register() {
 	const { register } = useAuth();
@@ -104,9 +105,10 @@ export default function Register() {
 						required
 					/>
 				</label>
-				<button type="submit" className={styles.registerBtn}>
+
+				<Button type="submit" className={styles.registerBtn}>
 					Register
-				</button>
+				</Button>
 			</form>
 		</section>
 	);
