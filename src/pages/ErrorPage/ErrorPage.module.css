@@ -1,0 +1,46 @@
+.main {
+	background-image: linear-gradient(var(--platinum), var(--steel));
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
+	justify-content: center;
+	align-items: center;
+	font-family: "Roboto", sans-serif;
+	text-align: center;
+	min-height: 100vh;
+}
+
+.errorContainer {
+	border: 3px solid var(--black);
+	border-radius: 20px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--white);
+}
+
+.errorContent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.errorContent img {
+	height: 250px;
+}
+
+.errorContainer p {
+	max-width: 250px;
+}
+
+.main a {
+	text-decoration: none;
+	color: var(--blue);
+}
+
+@media (max-width: 500px) {
+	.errorContent {
+		flex-direction: column;
+	}
+}

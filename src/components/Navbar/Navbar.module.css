@@ -1,0 +1,8 @@
+.nav {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: space-between;
+	padding: 10px;
+}

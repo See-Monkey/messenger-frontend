@@ -44,12 +44,24 @@ export function AuthProvider({ children }) {
 				loading,
 				login: async (data) => {
 					const res = await authApi.login(data);
-					if (res?.token) setToken(res.token);
+					if (res?.token) {
+						setToken(res.token);
+
+						if (res.user) {
+							setUser(res.user);
+						}
+					}
 					return res;
 				},
 				register: async (data) => {
 					const res = await authApi.register(data);
-					if (res?.token) setToken(res.token);
+					if (res?.token) {
+						setToken(res.token);
+
+						if (res.user) {
+							setUser(res.user);
+						}
+					}
 					return res;
 				},
 				logout,
