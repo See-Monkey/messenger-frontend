@@ -1,7 +1,16 @@
 import { apiFetch } from "./client.js";
 
 // Get account details
-export const getMe = () => apiFetch("/users/me");
+export async function getMe() {
+	try {
+		return await apiFetch("/users/me");
+	} catch (err) {
+		if (err.message === "Unauthorized") {
+			return null;
+		}
+		throw err;
+	}
+}
 
 // Update account details
 export const updateMe = (data) =>

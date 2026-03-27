@@ -50,6 +50,7 @@ export default function Register() {
 						type="email"
 						value={form.username}
 						onChange={handleChange}
+						autoComplete="email"
 						required
 					/>
 				</label>
@@ -61,6 +62,7 @@ export default function Register() {
 						type="string"
 						value={form.displayName}
 						onChange={handleChange}
+						autoComplete="username"
 					/>
 				</label>
 
@@ -91,6 +93,7 @@ export default function Register() {
 						type="password"
 						value={form.password}
 						onChange={handleChange}
+						autoComplete="currentPassword"
 						required
 					/>
 				</label>
@@ -102,6 +105,7 @@ export default function Register() {
 						type="password"
 						value={form.confirmPassword}
 						onChange={handleChange}
+						autoComplete="currentPassword"
 						required
 					/>
 				</label>

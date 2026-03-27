@@ -1,5 +1,7 @@
 .nav {
+	background-image: linear-gradient(var(--black), var(--carbon));
 	height: 100vh;
+	min-width: 300px;
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;

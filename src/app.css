@@ -34,7 +34,7 @@
 main {
 	flex: 1;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	background-image: linear-gradient(var(--carbon), var(--gunmetal));
 }

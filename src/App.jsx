@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import "./app.css";
 import { getThemeVars, DEFAULT_THEME } from "./theme.js";
+import { getMe } from "./api/users.js";
 import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
@@ -11,8 +12,7 @@ function App() {
 	useEffect(() => {
 		async function loadUser() {
 			try {
-				const res = await fetch("/api/me"); // your auth endpoint
-				const user = await res.json();
+				const user = await getMe();
 
 				if (user?.themeColor) {
 					setTheme(user.themeColor);

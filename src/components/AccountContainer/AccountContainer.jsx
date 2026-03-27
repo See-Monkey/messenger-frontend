@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../context/useAuth.js";
 import styles from "./AccountContainer.module.css";
+import cog from "../../icons/cog.svg";
 
 export default function AccountContainer() {
 	const { user, isAuthenticated, logout, loading } = useAuth();
@@ -37,7 +38,7 @@ export default function AccountContainer() {
 		<div className={styles.container} ref={menuRef}>
 			<div className={styles.userInfo}>
 				<img
-					src={user?.avatarUrl || "/mailbox-green.svg"}
+					src={user?.avatarUrl || "./mailbox-green.svg"}
 					alt="avatar"
 					className={styles.avatar}
 				/>
@@ -45,7 +46,7 @@ export default function AccountContainer() {
 			</div>
 
 			<button className={styles.gear} onClick={() => setOpen((prev) => !prev)}>
-				⚙
+				<img src={cog} alt="settings icon" className={styles.settingsIcon} />
 			</button>
 
 			{open && (

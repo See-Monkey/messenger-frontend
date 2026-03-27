@@ -1,40 +1,58 @@
 .container {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	gap: 12px;
 	position: relative;
 	padding: 8px 12px;
-	background-color: var(--carbon);
+	background-color: var(--gunmetal);
 	border-radius: 6px;
+	text-decoration: none;
+	color: var(--white);
+}
+
+.container a {
+	text-decoration: none;
+	color: var(--white);
 }
 
 .userInfo {
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	color: var(--white);
 }
 
 .avatar {
 	width: 40px;
 	height: 40px;
-	border-radius: 50%;
+	border-radius: 9999px;
 	object-fit: cover;
+	background-color: var(--iron);
+	padding: 2px;
 }
 
 .gear {
 	background: none;
 	border: none;
 	cursor: pointer;
-	font-size: 18px;
+}
+
+.settingsIcon {
+	height: 36px;
+	width: 36px;
+	border-radius: 9999px;
+	padding: 1px;
+	background-color: var(--slate);
 }
 
 .dropdown {
 	position: absolute;
-	top: 100%;
+	bottom: 100%;
 	right: 0;
-	margin-top: 8px;
-	background: white;
-	border: 1px solid #ddd;
+	margin-bottom: 8px;
+	background-color: var(--carbon);
+	border: 1px solid var(--iron);
 	border-radius: 8px;
 	padding: 8px;
 	display: flex;
@@ -50,4 +68,5 @@
 	border: none;
 	padding: 6px 8px;
 	cursor: pointer;
+	color: var(--white);
 }
