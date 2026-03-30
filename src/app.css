@@ -37,4 +37,6 @@ main {
 	justify-content: flex-start;
 	align-items: center;
 	background-image: linear-gradient(var(--carbon), var(--gunmetal));
+
+	font-family: "Roboto", sans-serif;
 }

@@ -8,3 +8,20 @@
 	justify-content: space-between;
 	padding: 10px;
 }
+
+.upperNav {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.chatsContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.upperNav h1 {
+	color: var(--platinum);
+	padding: 10px;
+}
