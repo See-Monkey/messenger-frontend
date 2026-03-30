@@ -10,7 +10,7 @@ export default function AccountContainer() {
 	const menuRef = useRef();
 	const navigate = useNavigate();
 
-	// close on outside click
+	// Close on outside click
 	useEffect(() => {
 		function handleClick(e) {
 			if (menuRef.current && !menuRef.current.contains(e.target)) {
@@ -22,9 +22,10 @@ export default function AccountContainer() {
 	}, []);
 
 	if (loading) {
-		return <div className={styles.container}>...</div>; // or nothing
+		return <div className={styles.container}>...</div>;
 	}
 
+	// Not logged in, display login / register links
 	if (!isAuthenticated) {
 		return (
 			<div className={styles.container}>
@@ -34,17 +35,24 @@ export default function AccountContainer() {
 		);
 	}
 
+	// Account container
 	return (
 		<div className={styles.container} ref={menuRef}>
 			<div className={styles.userInfo}>
+				{/* Avatar */}
 				<img
 					src={user?.avatarUrl || "./mailbox-green.svg"}
 					alt="avatar"
 					className={styles.avatar}
 				/>
-				<span>{user?.displayName || user?.username}</span>
+
+				{/* Display name */}
+				<p className={styles.displayName}>
+					{user?.displayName || user?.username}
+				</p>
 			</div>
 
+			{/* Settings popup menu */}
 			<button className={styles.gear} onClick={() => setOpen((prev) => !prev)}>
 				<img src={cog} alt="settings icon" className={styles.settingsIcon} />
 			</button>
@@ -59,6 +67,7 @@ export default function AccountContainer() {
 						onClick={() => {
 							logout();
 							navigate("/");
+							setOpen(false);
 						}}
 					>
 						Logout
