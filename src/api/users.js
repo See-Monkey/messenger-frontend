@@ -25,11 +25,18 @@ export const changeMyPassword = (data) =>
 		body: JSON.stringify(data),
 	});
 
-// Get public profile
-export const getPublicProfile = (userId) => apiFetch(`/users/${userId}`);
-
-// Admin delete user
-export const deleteAccount = () =>
+// Delete account
+export const deleteMe = () =>
 	apiFetch("/users/me", {
 		method: "DELETE",
 	});
+
+// Search users
+export const searchUsers = (query, limit = 15) => {
+	if (!query?.trim()) return Promise.resolve([]);
+
+	return apiFetch(`/users?query=${encodeURIComponent(query)}&limit=${limit}`);
+};
+
+// Get public profile
+export const getPublicProfile = (userId) => apiFetch(`/users/${userId}`);
