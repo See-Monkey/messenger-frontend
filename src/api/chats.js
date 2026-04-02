@@ -1,13 +1,18 @@
 import { apiFetch } from "./client.js";
 
 // Get chats (paginated)
-export const getChats = (cursor, limit = 20) => {
+export const getChats = async (cursor, limit = 20) => {
 	const params = new URLSearchParams();
 
 	if (cursor) params.append("cursor", cursor);
 	if (limit) params.append("limit", limit);
 
-	return apiFetch(`/chats?${params.toString()}`);
+	const res = await apiFetch(`/chats?${params.toString()}`);
+
+	return {
+		chats: res.data,
+		nextCursor: res.nextCursor,
+	};
 };
 
 // Create chat
