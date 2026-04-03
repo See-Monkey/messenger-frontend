@@ -12,13 +12,13 @@
 .upperNav {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: 40px;
 }
 
 .chatsContainer {
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
+	gap: 14px;
 
 	overflow-y: auto;
 	height: 100%;
@@ -29,7 +29,7 @@
 	padding: 10px;
 }
 
-.chatsContainer a {
+.chatsContainer a:not(.newChatBtn) {
 	padding: 8px 12px;
 	background-color: var(--gunmetal);
 	border-radius: 6px;
@@ -38,7 +38,24 @@
 }
 
 .newChatBtn {
+	padding: 8px 8px;
+	border-radius: 50%;
 	border: 2px solid var(--theme);
+	background-color: var(--gunmetal);
+	align-self: center;
+}
+
+.newChatBtn:hover {
+	padding: 8px 8px;
+	border-radius: 50%;
+	border: 2px solid var(--slate);
+	background-color: var(--theme);
+	align-self: center;
+}
+
+.plusIcon {
+	height: 36px;
+	width: 36px;
 }
 
 .chatBtn {

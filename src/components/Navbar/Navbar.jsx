@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import styles from "./Navbar.module.css";
 import AccountContainer from "../AccountContainer/AccountContainer";
+import plusIcon from "../../icons/plus-circle-outline.svg";
 import { getChats } from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
 
@@ -65,7 +66,11 @@ export default function Navbar() {
 							`${styles.newChatBtn} ${isActive ? styles.active : ""}`
 						}
 					>
-						+
+						<img
+							src={plusIcon}
+							alt="create new chat"
+							className={styles.plusIcon}
+						/>
 					</NavLink>
 
 					{/* Chat List */}
