@@ -35,7 +35,7 @@ export const deleteMe = () =>
 export const searchUsers = (query, limit = 15) => {
 	if (!query?.trim()) return Promise.resolve([]);
 
-	return apiFetch(`/users?query=${encodeURIComponent(query)}&limit=${limit}`);
+	return apiFetch(`/users?search=${encodeURIComponent(query)}&limit=${limit}`);
 };
 
 // Get public profile
