@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login.jsx";
 import Register from "../pages/Register/Register.jsx";
 import CreateChat from "../pages/CreateChat/CreateChat.jsx";
 import ChatMessages from "../pages/ChatMessages/ChatMessages.jsx";
+import Account from "../pages/Account/Account.jsx";
 import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
@@ -31,6 +32,14 @@ const router = createBrowserRouter([
 				element: (
 					<ProtectedRoute>
 						<ChatMessages />
+					</ProtectedRoute>
+				),
+			},
+			{
+				path: "account",
+				element: (
+					<ProtectedRoute>
+						<Account />
 					</ProtectedRoute>
 				),
 			},
