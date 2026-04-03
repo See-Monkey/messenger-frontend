@@ -10,6 +10,7 @@
 	border: 2px solid var(--theme);
 	text-decoration: none;
 	color: var(--white);
+	margin: 8px;
 }
 
 .container a {

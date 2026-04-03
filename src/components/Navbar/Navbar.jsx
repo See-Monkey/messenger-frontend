@@ -59,7 +59,7 @@ export default function Navbar() {
 				<h1 className={styles.logo}>Messenger</h1>
 
 				<div className={styles.chatsContainer} onScroll={handleScroll}>
-					{/* Create Chat */}
+					{/* Create chat */}
 					<NavLink
 						to="/chats/new"
 						className={({ isActive }) =>
@@ -73,7 +73,7 @@ export default function Navbar() {
 						/>
 					</NavLink>
 
-					{/* Chat List */}
+					{/* Chat list */}
 					{chats.map((chat) => {
 						const otherMember = chat.chatMembers?.find(
 							(m) => m.user.id !== user?.id,
