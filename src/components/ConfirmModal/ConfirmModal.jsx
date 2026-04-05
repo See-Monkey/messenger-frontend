@@ -1,4 +1,5 @@
 import styles from "./ConfirmModal.module.css";
+import Button from "../../components/Button/Button.jsx";
 
 export default function ConfirmModal({
   isOpen,
@@ -16,12 +17,17 @@ export default function ConfirmModal({
         <p>{message}</p>
 
         <div className={styles.buttons}>
-          <button onClick={onConfirm} className={styles.confirmBtn}>
+          <Button
+            type="button"
+            className={styles.confirmBtn}
+            onClick={onConfirm}
+            variant="danger"
+          >
             {confirmText}
-          </button>
-          <button onClick={onCancel} className={styles.cancelBtn}>
+          </Button>
+          <Button type="button" className={styles.cancelBtn} onClick={onCancel}>
             {cancelText}
-          </button>
+          </Button>
         </div>
       </div>
     </div>
