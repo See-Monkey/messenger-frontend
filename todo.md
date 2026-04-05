@@ -7,7 +7,6 @@ USER SEARCH
 
 NAVBAR
 
-- style add button
 - collapsible navbar
 - make preview update with state
 
@@ -28,15 +27,12 @@ CREATE CHAT
 
 ACCOUNT
 
-- style
 - color picker on Account & Register
 
 HOME PAGE
 
 - info about the app features
 - screenshots
-
-test Navbar scroll when chats overflow
 
 make sure register is validating confirm password
 
