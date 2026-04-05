@@ -149,123 +149,128 @@ export default function Account() {
 
   return (
     <section className={styles.accountSection}>
-      <h2>My Account</h2>
+      <div className={styles.accountContainer}>
+        <h2>My Account</h2>
 
-      <div>
-        <img src={user.avatarUrl || defaultAvatar} alt="avatar" />
-        <div>Username: {user.username}</div>
+        <div className={styles.avatarContainer}>
+          <h3>{user.username}</h3>
+          <img
+            src={user.avatarUrl || defaultAvatar}
+            alt="avatar"
+            className={styles.avatar}
+          />
+        </div>
+
+        {/* Profile form */}
+        <form onSubmit={handleUpdate} className={styles.profileForm}>
+          <h3>Update Profile</h3>
+          <div>
+            <label>
+              Display Name :
+              <input
+                name="displayName"
+                value={form.displayName}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Avatar URL :
+              <input
+                name="avatarUrl"
+                value={form.avatarUrl}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Theme Color :
+              <input
+                name="themeColor"
+                value={form.themeColor}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <Button type="submit" className={styles.updateProfileBtn}>
+            Update Profile
+          </Button>
+          {/* Inline feedback */}
+          {profileError && <div>{profileError}</div>}
+          {profileSuccess && <div>{profileSuccess}</div>}
+        </form>
+
+        {/* Password form */}
+        <form onSubmit={handleChangePassword} className={styles.passwordForm}>
+          <h3>Change Password</h3>
+          <div>
+            <label>
+              Current Password :
+              <input
+                type="password"
+                name="currentPassword"
+                value={passwordForm.currentPassword}
+                onChange={handlePasswordChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              New Password :
+              <input
+                type="password"
+                name="newPassword"
+                value={passwordForm.newPassword}
+                onChange={handlePasswordChange}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Confirm Password :
+              <input
+                type="password"
+                name="confirmPassword"
+                value={passwordForm.confirmPassword}
+                onChange={handlePasswordChange}
+              />
+            </label>
+          </div>
+          <Button type="submit" className={styles.changePasswordBtn}>
+            Change Password
+          </Button>
+          {/* Inline feedback */}
+          {passwordError && <div>{passwordError}</div>}
+          {passwordSuccess && <div>{passwordSuccess}</div>}
+        </form>
+
+        {/* Delete */}
+        <div className={styles.deleteContainer}>
+          <h3>Delete Account</h3>
+          <p className={styles.warningMsg}>
+            WARNING: There will be no way to recover your account after
+            deletion.
+          </p>
+          <Button
+            onClick={handleDelete}
+            type="button"
+            className={styles.deleteAccountBtn}
+            variant="danger"
+          >
+            Delete
+          </Button>
+          {deleteError && <div>{deleteError}</div>}
+        </div>
+        <ConfirmModal
+          isOpen={showConfirm}
+          message="Are you sure you want to delete your account?"
+          confirmText="Delete Forever"
+          onConfirm={confirmDelete}
+          onCancel={() => setShowConfirm(false)}
+        />
       </div>
-
-      {/* Profile form */}
-      <form onSubmit={handleUpdate}>
-        <h3>Update Profile</h3>
-
-        <div>
-          <label>
-            Display Name:
-            <input
-              name="displayName"
-              value={form.displayName}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Avatar URL:
-            <input
-              name="avatarUrl"
-              value={form.avatarUrl}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-
-        <div>
-          <label>
-            Theme Color:
-            <input
-              name="themeColor"
-              value={form.themeColor}
-              onChange={handleChange}
-            />
-          </label>
-        </div>
-
-        <Button type="submit" className={styles.updateProfileBtn}>
-          Update Profile
-        </Button>
-
-        {/* Inline feedback */}
-        {profileError && <div>{profileError}</div>}
-        {profileSuccess && <div>{profileSuccess}</div>}
-      </form>
-
-      {/* Password form */}
-      <form onSubmit={handleChangePassword}>
-        <h3>Change Password</h3>
-
-        <div>
-          <input
-            type="password"
-            name="currentPassword"
-            placeholder="Current Password"
-            value={passwordForm.currentPassword}
-            onChange={handlePasswordChange}
-          />
-        </div>
-
-        <div>
-          <input
-            type="password"
-            name="newPassword"
-            placeholder="New Password"
-            value={passwordForm.newPassword}
-            onChange={handlePasswordChange}
-          />
-        </div>
-
-        <div>
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={passwordForm.confirmPassword}
-            onChange={handlePasswordChange}
-          />
-        </div>
-
-        <Button type="submit" className={styles.changePasswordBtn}>
-          Change Password
-        </Button>
-
-        {/* Inline feedback */}
-        {passwordError && <div>{passwordError}</div>}
-        {passwordSuccess && <div>{passwordSuccess}</div>}
-      </form>
-
-      {/* Delete */}
-      <div>
-        <h3>Delete Account</h3>
-        <Button
-          onClick={handleDelete}
-          type="button"
-          className={styles.deleteAccountBtn}
-          variant="danger"
-        >
-          Delete
-        </Button>
-        {deleteError && <div>{deleteError}</div>}
-      </div>
-
-      <ConfirmModal
-        isOpen={showConfirm}
-        message="Are you sure you want to delete your account?"
-        confirmText="Delete Forever"
-        onConfirm={confirmDelete}
-        onCancel={() => setShowConfirm(false)}
-      />
     </section>
   );
 }

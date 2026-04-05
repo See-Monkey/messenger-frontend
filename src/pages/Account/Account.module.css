@@ -1,0 +1,87 @@
+.accountSection {
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+  padding: 30px;
+  color: var(--white);
+}
+
+.accountContainer h2 {
+  color: var(--theme);
+}
+
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.profileForm,
+.passwordForm,
+.deleteContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profileForm h3,
+.passwordForm h3,
+.deleteContainer h3 {
+  align-self: center;
+}
+
+.profileForm label,
+.passwordForm label,
+.deleteContainer label {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileForm input,
+.passwordForm input,
+.deleteContainer input {
+  background-color: var(--white);
+  border: 1px solid var(--steel);
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.updateProfileBtn,
+.changePasswordBtn,
+.deleteAccountBtn {
+  align-self: center;
+}
+
+.warningMsg {
+  align-self: center;
+  max-width: 300px;
+}

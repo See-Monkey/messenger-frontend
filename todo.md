@@ -1,5 +1,4 @@
 - adding a message or editing a chat should refresh Navbar
-- use custom Button in ConfirmModal
 - add user or group avatar to Navbar chats
 
 USER SEARCH
@@ -36,6 +35,8 @@ HOME PAGE
 
 - info about the app features
 - screenshots
+
+test Navbar scroll when chats overflow
 
 make sure register is validating confirm password
 
