@@ -40,6 +40,7 @@ export function AuthProvider({ children }) {
       value={{
         token,
         user,
+        setUser,
         isAuthenticated: !!user,
         loading,
         login: async (data) => {

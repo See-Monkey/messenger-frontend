@@ -24,7 +24,7 @@ export default function Navbar() {
     }
 
     loadChats();
-  }, []);
+  }, [user]);
 
   const loadMoreChats = async () => {
     if (!nextCursor || loadingMore) return;

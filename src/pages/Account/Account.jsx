@@ -8,12 +8,13 @@ import {
 } from "../../api/users.js";
 import ConfirmModal from "../../components/ConfirmModal/ConfirmModal.jsx";
 import styles from "./Account.module.css";
+import { useAuth } from "../../context/useAuth.js";
 import defaultAvatar from "../../icons/account-circle.svg";
 
 export default function Account() {
   const navigate = useNavigate();
 
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useAuth();
   const [loading, setLoading] = useState(true);
 
   const [form, setForm] = useState({
@@ -44,7 +45,8 @@ export default function Account() {
     async function load() {
       try {
         const data = await getMe();
-        setUser(data);
+
+        setUser(data); // <-- sync global state
 
         setForm({
           displayName: data.displayName || "",
@@ -59,7 +61,7 @@ export default function Account() {
     }
 
     load();
-  }, []);
+  }, [setUser]);
 
   function handleChange(e) {
     const { name, value } = e.target;
