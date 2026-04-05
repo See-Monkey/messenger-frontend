@@ -10,11 +10,11 @@ import { AuthProvider } from "./context/AuthProvider.jsx";
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
-	<StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<AuthProvider>
-				<RouterProvider router={AppRoutes} />
-			</AuthProvider>
-		</QueryClientProvider>
-	</StrictMode>,
+  <StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <RouterProvider router={AppRoutes} />
+      </AuthProvider>
+    </QueryClientProvider>
+  </StrictMode>,
 );

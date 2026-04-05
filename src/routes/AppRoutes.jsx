@@ -11,40 +11,40 @@ import Account from "../pages/Account/Account.jsx";
 import ErrorPage from "../pages/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <App />,
-		errorElement: <ErrorPage />,
-		children: [
-			{ index: true, element: <Home /> },
-			{ path: "login", element: <Login /> },
-			{ path: "register", element: <Register /> },
-			{
-				path: "chats/new",
-				element: (
-					<ProtectedRoute>
-						<CreateChat />
-					</ProtectedRoute>
-				),
-			},
-			{
-				path: "chats/:chatId",
-				element: (
-					<ProtectedRoute>
-						<ChatMessages />
-					</ProtectedRoute>
-				),
-			},
-			{
-				path: "account",
-				element: (
-					<ProtectedRoute>
-						<Account />
-					</ProtectedRoute>
-				),
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "login", element: <Login /> },
+      { path: "register", element: <Register /> },
+      {
+        path: "chats/new",
+        element: (
+          <ProtectedRoute>
+            <CreateChat />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "chats/:chatId",
+        element: (
+          <ProtectedRoute>
+            <ChatMessages />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "account",
+        element: (
+          <ProtectedRoute>
+            <Account />
+          </ProtectedRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 export default router;

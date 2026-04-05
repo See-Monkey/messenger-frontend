@@ -1,42 +1,42 @@
 :root {
-	--white: #f8f9fa;
-	--platinum: #e9ecef;
-	--silver: #dee2e6;
-	--aluminum: #c6ccd2;
-	--steel: #99a1a8;
-	--slate: #6c757d;
-	--iron: #495057;
-	--gunmetal: #2e3338;
-	--carbon: #121517;
-	--black: #0a0a0b;
+  --white: #f8f9fa;
+  --platinum: #e9ecef;
+  --silver: #dee2e6;
+  --aluminum: #c6ccd2;
+  --steel: #99a1a8;
+  --slate: #6c757d;
+  --iron: #495057;
+  --gunmetal: #2e3338;
+  --carbon: #121517;
+  --black: #0a0a0b;
 
-	--red: #ba4232;
-	--orange: #d08b42;
-	--yellow: #dde681;
-	--green: #b5e48c;
-	--emerald: #76c893;
-	--teal: #34a04a;
-	--cerulean: #1a759f;
-	--blue: #184e77;
+  --red: #ba4232;
+  --orange: #d08b42;
+  --yellow: #dde681;
+  --green: #b5e48c;
+  --emerald: #76c893;
+  --teal: #34a04a;
+  --cerulean: #1a759f;
+  --blue: #184e77;
 
-	--default: #14e12e;
+  --default: #14e12e;
 }
 
 #root {
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	--theme: #14e12e;
-	--theme-darken: rgb(10, 120, 20);
-	--theme-lighten: rgb(100, 240, 120);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  --theme: #14e12e;
+  --theme-darken: rgb(10, 120, 20);
+  --theme-lighten: rgb(100, 240, 120);
 }
 
 main {
-	flex: 1;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	background-image: linear-gradient(var(--carbon), var(--gunmetal));
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-image: linear-gradient(var(--carbon), var(--gunmetal));
 
-	font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
 }

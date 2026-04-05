@@ -1,91 +1,91 @@
 .container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	gap: 12px;
-	position: relative;
-	padding: 8px 12px;
-	background-color: var(--gunmetal);
-	border-radius: 6px;
-	border: 2px solid var(--theme);
-	text-decoration: none;
-	color: var(--white);
-	margin: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  padding: 8px 12px;
+  background-color: var(--gunmetal);
+  border-radius: 6px;
+  border: 2px solid var(--theme);
+  text-decoration: none;
+  color: var(--white);
+  margin: 8px;
 }
 
 .container a {
-	text-decoration: none;
-	color: var(--white);
+  text-decoration: none;
+  color: var(--white);
 }
 
 .container a:hover {
-	color: var(--theme);
+  color: var(--theme);
 }
 
 .userInfo {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--white);
 }
 
 .avatar {
-	width: 40px;
-	height: 40px;
-	border-radius: 9999px;
-	object-fit: cover;
-	background-color: var(--iron);
-	padding: 2px;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+  background-color: var(--iron);
+  padding: 2px;
 }
 
 .displayName {
-	color: var(--platinum);
+  color: var(--platinum);
 }
 
 .gear {
-	background: none;
-	border: none;
-	cursor: pointer;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .settingsIcon {
-	height: 36px;
-	width: 36px;
-	border-radius: 9999px;
-	padding: 1px;
-	background-color: var(--slate);
+  height: 36px;
+  width: 36px;
+  border-radius: 9999px;
+  padding: 1px;
+  background-color: var(--slate);
 }
 
 .settingsIcon:hover {
-	background-color: var(--theme);
+  background-color: var(--theme);
 }
 
 .dropdown {
-	position: absolute;
-	bottom: 100%;
-	right: 0;
-	margin-bottom: 8px;
-	background-color: var(--carbon);
-	border: 1px solid var(--iron);
-	border-radius: 8px;
-	padding: 8px;
-	display: flex;
-	flex-direction: column;
-	min-width: 120px;
-	z-index: 10;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 8px;
+  background-color: var(--carbon);
+  border: 1px solid var(--iron);
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  min-width: 120px;
+  z-index: 10;
 }
 
 .dropdown a,
 .dropdown button {
-	text-align: left;
-	background: none;
-	border: none;
-	padding: 6px 8px;
-	cursor: pointer;
-	color: var(--white);
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  color: var(--white);
 }
 
 .dropdown a:hover,
 .dropdown button:hover {
-	color: var(--theme);
+  color: var(--theme);
 }

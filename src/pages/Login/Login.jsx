@@ -5,68 +5,68 @@ import styles from "./Login.module.css";
 import Button from "../../components/Button/Button.jsx";
 
 export default function Login() {
-	const { login } = useAuth();
-	const navigate = useNavigate();
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-	const [form, setForm] = useState({
-		username: "",
-		password: "",
-	});
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
 
-	const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
 
-	function handleChange(e) {
-		setForm({
-			...form,
-			[e.target.name]: e.target.value,
-		});
-	}
+  function handleChange(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-	async function handleSubmit(e) {
-		e.preventDefault();
-		setError(null);
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError(null);
 
-		try {
-			await login(form);
-			navigate("/");
-		} catch (err) {
-			setError(err.message);
-		}
-	}
+    try {
+      await login(form);
+      navigate("/");
+    } catch (err) {
+      setError(err.message);
+    }
+  }
 
-	return (
-		<section className={styles.loginSection}>
-			<form onSubmit={handleSubmit} className={styles.loginForm}>
-				<h2 className={styles.loginHeader}>Login</h2>
-				{error && <p>{error}</p>}
-				<label>
-					Email Address:
-					<input
-						name="username"
-						type="email"
-						placeholder="Email"
-						value={form.username}
-						onChange={handleChange}
-						autoComplete="email"
-					/>
-				</label>
+  return (
+    <section className={styles.loginSection}>
+      <form onSubmit={handleSubmit} className={styles.loginForm}>
+        <h2 className={styles.loginHeader}>Login</h2>
+        {error && <p>{error}</p>}
+        <label>
+          Email Address:
+          <input
+            name="username"
+            type="email"
+            placeholder="Email"
+            value={form.username}
+            onChange={handleChange}
+            autoComplete="email"
+          />
+        </label>
 
-				<label>
-					Password:
-					<input
-						name="password"
-						type="password"
-						placeholder="Password"
-						value={form.password}
-						onChange={handleChange}
-						autoComplete="currentPassword"
-					/>
-				</label>
+        <label>
+          Password:
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            autoComplete="currentPassword"
+          />
+        </label>
 
-				<Button type="submit" className={styles.loginBtn} variant="secondary">
-					Login
-				</Button>
-			</form>
-		</section>
-	);
+        <Button type="submit" className={styles.loginBtn} variant="secondary">
+          Login
+        </Button>
+      </form>
+    </section>
+  );
 }
