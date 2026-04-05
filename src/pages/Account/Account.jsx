@@ -7,6 +7,7 @@ import {
   deleteMe,
 } from "../../api/users.js";
 import ConfirmModal from "../../components/ConfirmModal/ConfirmModal.jsx";
+import Button from "../../components/Button/Button.jsx";
 import styles from "./Account.module.css";
 import { useAuth } from "../../context/useAuth.js";
 import defaultAvatar from "../../icons/account-circle.svg";
@@ -192,7 +193,9 @@ export default function Account() {
           </label>
         </div>
 
-        <button type="submit">Update Profile</button>
+        <Button type="submit" className={styles.updateProfileBtn}>
+          Update Profile
+        </Button>
 
         {/* Inline feedback */}
         {profileError && <div>{profileError}</div>}
@@ -233,7 +236,9 @@ export default function Account() {
           />
         </div>
 
-        <button type="submit">Change Password</button>
+        <Button type="submit" className={styles.changePasswordBtn}>
+          Change Password
+        </Button>
 
         {/* Inline feedback */}
         {passwordError && <div>{passwordError}</div>}
@@ -243,7 +248,14 @@ export default function Account() {
       {/* Delete */}
       <div>
         <h3>Delete Account</h3>
-        <button onClick={handleDelete}>Delete</button>
+        <Button
+          onClick={handleDelete}
+          type="button"
+          className={styles.deleteAccountBtn}
+          variant="danger"
+        >
+          Delete
+        </Button>
         {deleteError && <div>{deleteError}</div>}
       </div>
 
