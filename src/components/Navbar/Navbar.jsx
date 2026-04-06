@@ -3,6 +3,8 @@ import { NavLink } from "react-router";
 import styles from "./Navbar.module.css";
 import AccountContainer from "../AccountContainer/AccountContainer";
 import plusIcon from "../../icons/plus-circle-outline.svg";
+import groupAvatar from "../../icons/account-group.svg";
+import defualtAvatar from "../../icons/account-circle.svg";
 import { getChats } from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
 
@@ -102,9 +104,23 @@ export default function Navbar() {
                 }
                 style={{ borderColor }}
               >
-                <div className={styles.chatLabel}>{label}</div>
-
-                {preview && <div className={styles.chatPreview}>{preview}</div>}
+                <img
+                  src={
+                    chat.isGroup
+                      ? groupAvatar
+                      : otherMember?.user.avatarUrl
+                        ? otherMember.user.avatarUrl
+                        : defualtAvatar
+                  }
+                  alt="chat image"
+                  className={styles.chatAvatar}
+                />
+                <div className={styles.chatContent}>
+                  <div className={styles.chatLabel}>{label}</div>
+                  {preview && (
+                    <div className={styles.chatPreview}>{preview}</div>
+                  )}
+                </div>
               </NavLink>
             );
           })}

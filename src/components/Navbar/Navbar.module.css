@@ -65,6 +65,18 @@
 
 .chatBtn {
   border: 2px solid;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chatAvatar {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  background-color: var(--silver);
+  border-radius: 9999px;
+  padding: 1px;
 }
 
 .chatsContainer a.active {

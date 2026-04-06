@@ -1,5 +1,4 @@
 - adding a message or editing a chat should refresh Navbar
-- add user or group avatar to Navbar chats
 
 USER SEARCH
 
@@ -34,6 +33,11 @@ HOME PAGE
 - info about the app features
 - screenshots
 
-make sure register is validating confirm password
+OTHER
 
-function to turn black svg into theme color
+- make sure register is validating confirm password
+- function to turn black svg into theme color
+- truncate too-long username in AccountContainer
+
+- make completed seed file to populate example data
+- make guest login to view seed data
