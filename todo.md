@@ -22,7 +22,6 @@ CHAT MESSAGE
 CREATE CHAT
 
 - don't allow duplicate chat creation
-- style
 
 ACCOUNT
 

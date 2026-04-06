@@ -3,7 +3,9 @@ import { useNavigate } from "react-router";
 import styles from "./CreateChat.module.css";
 import { createChat } from "../../api/chats.js";
 // import { useAuth } from "../../context/useAuth.js";
+import Button from "../../components/Button/Button.jsx";
 import UserSearch from "../../components/UserSearch/UserSearch.jsx";
+import defaultAvatar from "../../icons/account-circle.svg";
 
 export default function CreateChat() {
   const navigate = useNavigate();
@@ -47,21 +49,33 @@ export default function CreateChat() {
 
   return (
     <section className={styles.createChatSection}>
-      <h2>Create Chat</h2>
+      <h2>Create New Chat</h2>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.createChatForm}>
         <div>
           <UserSearch onSelectUser={addUser} selectedUsers={selectedUsers} />
         </div>
 
-        <div>
+        <div className={styles.selectedUsersContainer}>
           <h4>Selected Users</h4>
           {selectedUsers.map((u) => (
-            <div key={u.id}>
-              <div>{u.displayName}</div>
-              <button type="button" onClick={() => removeUser(u.id)}>
+            <div key={u.id} className={styles.selectedUserContainer}>
+              <div className={styles.userContainer}>
+                <img
+                  src={u.avatarUrl ? u.avatarUrl : defaultAvatar}
+                  alt="avatar"
+                  className={styles.avatar}
+                />
+                <p>{u.displayName}</p>
+              </div>
+              <Button
+                type="button"
+                onClick={() => removeUser(u.id)}
+                variant="danger"
+                size="sm"
+              >
                 Remove
-              </button>
+              </Button>
             </div>
           ))}
         </div>
@@ -78,9 +92,9 @@ export default function CreateChat() {
         )}
 
         <div>
-          <button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading}>
             {loading ? "Creating..." : "Create Chat"}
-          </button>
+          </Button>
         </div>
       </form>
     </section>

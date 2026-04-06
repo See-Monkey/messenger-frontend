@@ -1,0 +1,65 @@
+.createChatSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.createChatSection h2 {
+  color: var(--theme);
+}
+
+.createChatForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  color: var(--white);
+}
+
+.createChatForm input {
+  background-color: var(--white);
+  border: 1px solid var(--steel);
+  border-radius: 9999px;
+  padding: 6px 22px;
+  text-align: center;
+}
+
+.selectedUsersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 300px;
+}
+
+.selectedUserContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+}
+
+.userContainer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 9999px;
+  background-color: var(--silver);
+}
