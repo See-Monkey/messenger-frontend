@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./UserSearch.module.css";
 import { searchUsers } from "../../api/users.js";
+import defaultAvatar from "../../icons/account-circle.svg";
 
 export default function UserSearch({ onSelectUser, selectedUsers = [] }) {
   const [query, setQuery] = useState("");
@@ -43,7 +44,7 @@ export default function UserSearch({ onSelectUser, selectedUsers = [] }) {
         onChange={(e) => setQuery(e.target.value)}
       />
 
-      <div>
+      <div className={styles.usersContainer}>
         {loading && <div>Loading...</div>}
 
         {results.map((user) => (
@@ -54,9 +55,18 @@ export default function UserSearch({ onSelectUser, selectedUsers = [] }) {
               setQuery("");
               setResults([]);
             }}
+            className={styles.userContainer}
           >
-            <p>{user.displayName}</p>
-            <p>{user.username}</p>
+            <img
+              src={user.avatarUrl ? user.avatarUrl : defaultAvatar}
+              alt="avatar"
+              className={styles.avatar}
+            />
+
+            <div className={styles.nameContainer}>
+              <p>{user.displayName}</p>
+              <p>{user.username}</p>
+            </div>
           </div>
         ))}
       </div>
