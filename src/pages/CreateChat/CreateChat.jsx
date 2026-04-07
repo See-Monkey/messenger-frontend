@@ -57,7 +57,8 @@ export default function CreateChat() {
         </div>
 
         <div className={styles.selectedUsersContainer}>
-          <h4>Selected Users</h4>
+          {selectedUsers.length > 0 && <h4>Selected Users</h4>}
+
           {selectedUsers.map((u) => (
             <div key={u.id} className={styles.selectedUserContainer}>
               <div className={styles.userContainer}>
@@ -92,7 +93,10 @@ export default function CreateChat() {
         )}
 
         <div>
-          <Button type="submit" disabled={loading}>
+          <Button
+            type="submit"
+            disabled={loading || selectedUsers.length === 0}
+          >
             {loading ? "Creating..." : "Create Chat"}
           </Button>
         </div>
