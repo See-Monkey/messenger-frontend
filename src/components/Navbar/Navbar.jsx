@@ -82,7 +82,7 @@ export default function Navbar() {
             );
 
             const label = chat.isGroup
-              ? chat.name || "Group"
+              ? chat.name || "Group Chat"
               : otherMember?.user.displayName || "Chat";
 
             const borderColor = chat.isGroup

@@ -40,8 +40,9 @@ export default function ChatMessages() {
 
     if (chat.name) return chat.name;
 
-    const other = chat.chatMembers.find((m) => m.user.id !== user.id);
+    if (chat.isGroup) return "Group Chat";
 
+    const other = chat.chatMembers.find((m) => m.user.id !== user.id);
     return other?.user.displayName || other?.user.username;
   }
 
