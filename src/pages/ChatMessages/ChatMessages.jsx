@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import Button from "../../components/Button/Button.jsx";
 import styles from "./ChatMessages.module.css";
+import sendIcon from "../../icons/send.svg";
 import { getChatById } from "../../api/chats.js";
 import { sendMessage } from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
@@ -76,28 +78,50 @@ export default function ChatMessages() {
     }
   }
 
+  function toggleEdit() {}
+
+  function addMember() {}
+
+  function leaveChat() {}
+
   if (loading) return <div>Loading...</div>;
   if (!chat) return <div>Chat not found</div>;
 
   return (
     <section className={styles.chatMessagesSection}>
-      <h2>{getChatName()}</h2>
+      <div className={styles.chatHeader}>
+        <h2>{getChatName()}</h2>
 
-      <div>
+        <div className={styles.chatHeaderControls}>
+          <Button size="sm" onClick={toggleEdit}>
+            Edit Chat Name
+          </Button>
+
+          <Button size="sm" onClick={addMember}>
+            Add Member
+          </Button>
+
+          <Button size="sm" variant="danger" onClick={leaveChat}>
+            Leave Chat
+          </Button>
+        </div>
+      </div>
+
+      <div className={styles.messagesContainer}>
         {messages.map((msg) => {
           const sender = getSender(msg);
 
           return (
-            <div key={msg.id}>
-              <div>{sender?.displayName || "Unknown"}</div>
+            <div key={msg.id} className={styles.messageContainer}>
+              <p>{sender?.displayName || "Unknown"}</p>
 
-              <div>{msg.deletedAt ? "Message deleted" : msg.content}</div>
+              <p>{msg.deletedAt ? "Message deleted" : msg.content}</p>
             </div>
           );
         })}
       </div>
 
-      <form onSubmit={handleSend}>
+      <form onSubmit={handleSend} className={styles.messageForm}>
         <input
           type="text"
           value={input}
@@ -105,7 +129,9 @@ export default function ChatMessages() {
           placeholder="Type a message..."
         />
 
-        <button type="submit">Send</button>
+        <button type="submit">
+          <img src={sendIcon} alt="send" />
+        </button>
       </form>
     </section>
   );

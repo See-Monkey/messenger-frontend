@@ -1,4 +1,5 @@
 - adding a message or editing a chat should refresh Navbar
+- reusable truncate text helper function
 
 USER SEARCH
 
@@ -8,20 +9,20 @@ NAVBAR
 
 - collapsible navbar
 - make preview update with state
+- truncate too-long username in AccountContainer
+- truncate too long chat name or preview in Navbar
 
-CHAT MESSAGE
+CHAT MESSAGES
 
-- style
-- display users list for groups
+- style \*
+- display users list for groups \*
 - paginate messages
-- submit message extract to component?
+- edit chat name
 - add user, reusing userSearch
-- make chat name editable
-- add button to leave chat
+- leave chat with confirm modal
+- truncate too-long chat name in header
 
 CREATE CHAT
-
-- don't allow duplicate chat creation
 
 ACCOUNT
 
@@ -36,7 +37,6 @@ OTHER
 
 - make sure register is validating confirm password
 - function to turn black svg into theme color
-- truncate too-long username in AccountContainer
 
 - make completed seed file to populate example data
 - make guest login to view seed data
