@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth.js";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import styles from "./Login.module.css";
 import Button from "../../components/Button/Button.jsx";
 
@@ -67,6 +67,11 @@ export default function Login() {
           Login
         </Button>
       </form>
+      <div className={styles.registerContainer}>
+        <p>
+          Don't have an account? <Link to="/register">Register here.</Link>
+        </p>
+      </div>
     </section>
   );
 }
