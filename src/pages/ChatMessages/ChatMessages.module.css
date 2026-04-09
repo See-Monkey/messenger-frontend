@@ -71,6 +71,10 @@
   align-items: flex-end;
 }
 
+.messageDate {
+  color: var(--slate);
+}
+
 .messageForm {
   display: flex;
 }

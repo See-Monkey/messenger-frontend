@@ -220,7 +220,9 @@ export default function ChatMessages() {
               <div className={styles.messageContent}>
                 <div className={styles.messageContentHeader}>
                   <h3>{sender?.displayName || "Unknown"}</h3>
-                  <p>{formatMessageDate(msg.createdAt)}</p>
+                  <p className={styles.messageDate}>
+                    {formatMessageDate(msg.createdAt)}
+                  </p>
                 </div>
                 <p>{msg.deletedAt ? "Message deleted" : msg.content}</p>
               </div>
