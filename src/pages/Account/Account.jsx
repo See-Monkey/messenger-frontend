@@ -198,8 +198,12 @@ export default function Account() {
             Update Profile
           </Button>
           {/* Inline feedback */}
-          {profileError && <div>{profileError}</div>}
-          {profileSuccess && <div>{profileSuccess}</div>}
+          {profileError && (
+            <div className={styles.feedback}>{profileError}</div>
+          )}
+          {profileSuccess && (
+            <div className={styles.feedback}>{profileSuccess}</div>
+          )}
         </form>
 
         {/* Password form */}
@@ -242,8 +246,12 @@ export default function Account() {
             Change Password
           </Button>
           {/* Inline feedback */}
-          {passwordError && <div>{passwordError}</div>}
-          {passwordSuccess && <div>{passwordSuccess}</div>}
+          {passwordError && (
+            <div className={styles.feedback}>{passwordError}</div>
+          )}
+          {passwordSuccess && (
+            <div className={styles.feedback}>{passwordSuccess}</div>
+          )}
         </form>
 
         {/* Delete */}

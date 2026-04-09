@@ -23,8 +23,11 @@ export default function Navbar() {
   useEffect(() => {
     if (user) {
       fetchChats();
+    } else {
+      setChats([]);
+      setNextCursor(null);
     }
-  }, [user, fetchChats]);
+  }, [user, fetchChats, setChats, setNextCursor]);
 
   const loadMoreChats = async () => {
     if (!nextCursor || loadingMore) return;

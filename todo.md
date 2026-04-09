@@ -1,24 +1,18 @@
-- adding a message or editing a chat should refresh Navbar
 - reusable truncate text helper function
 
 USER SEARCH
 
-- style
-
 NAVBAR
 
 - collapsible navbar
-- make preview update with state
 - truncate too-long username in AccountContainer
 - truncate too long chat name or preview in Navbar
 
 CHAT MESSAGES
 
-- style \*
-- display users list for groups \*
 - paginate messages
-- edit chat name
-- add user, reusing userSearch
+- edit chat name in toggled input
+- add user allow toggle closed
 - leave chat with confirm modal
 - truncate too-long chat name in header
 
@@ -26,6 +20,7 @@ CREATE CHAT
 
 ACCOUNT
 
+- center success messages
 - color picker on Account & Register
 
 HOME PAGE
