@@ -11,6 +11,7 @@ import {
   sendMessage,
   leaveChat,
 } from "../../api/chats.js";
+import formatMessageDate from "../../functions/formatMessageDate.js";
 import { useAuth } from "../../context/useAuth.js";
 import { useChats } from "../../context/useChats.js";
 
@@ -200,11 +201,29 @@ export default function ChatMessages() {
         {messages.map((msg) => {
           const sender = getSender(msg);
 
-          return (
-            <div key={msg.id} className={styles.messageContainer}>
-              <p>{sender?.displayName || "Unknown"}</p>
+          const isOwnMessage = msg.senderId === user.id;
 
-              <p>{msg.deletedAt ? "Message deleted" : msg.content}</p>
+          return (
+            <div
+              key={msg.id}
+              className={`${styles.messageContainer} ${
+                isOwnMessage ? styles.userMessage : ""
+              }`}
+            >
+              <img
+                src={sender.avatarUrl}
+                alt="avatar"
+                className={styles.avatar}
+                style={{ backgroundColor: sender.themeColor }}
+              />
+
+              <div className={styles.messageContent}>
+                <div className={styles.messageContentHeader}>
+                  <h3>{sender?.displayName || "Unknown"}</h3>
+                  <p>{formatMessageDate(msg.createdAt)}</p>
+                </div>
+                <p>{msg.deletedAt ? "Message deleted" : msg.content}</p>
+              </div>
             </div>
           );
         })}

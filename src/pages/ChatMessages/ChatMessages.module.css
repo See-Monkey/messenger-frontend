@@ -36,6 +36,7 @@
 .messagesContainer {
   display: flex;
   flex-direction: column;
+  gap: 16px;
 
   flex: 1;
   min-height: 0;
@@ -45,6 +46,29 @@
 
 .messageContainer {
   display: flex;
+  gap: 8px;
+}
+
+.messageContainer.userMessage {
+  margin-left: 30%;
+}
+
+.avatar {
+  height: 54px;
+  width: 54px;
+  border-radius: 9999px;
+  padding: 2px;
+}
+
+.messageContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.messageContentHeader {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
 }
 
 .messageForm {
