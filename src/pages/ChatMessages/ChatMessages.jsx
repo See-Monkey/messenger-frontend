@@ -25,6 +25,18 @@ export default function ChatMessages() {
 
   const [showUserSearch, setShowUserSearch] = useState(false);
 
+  const navigate = useNavigate();
+  const { fetchChats } = useChats();
+
+  const otherMembers = chat?.chatMembers
+    .filter((m) => m.user.id !== user.id)
+    .map((m) => m.user);
+
+  const otherUser = chat?.chatMembers.find((m) => m.user.id !== user.id)?.user;
+
+  const isCustomNamed =
+    !chat?.isGroup && chat?.name && chat.name !== otherUser?.displayName;
+
   useEffect(() => {
     async function load() {
       try {
@@ -41,9 +53,6 @@ export default function ChatMessages() {
 
     load();
   }, [chatId]);
-
-  const navigate = useNavigate();
-  const { fetchChats } = useChats();
 
   function getSender(message) {
     return chat.chatMembers.find((m) => m.user.id === message.senderId)?.user;
@@ -119,10 +128,9 @@ export default function ChatMessages() {
     try {
       await addUserToChat(chat.id, userToAdd.id);
 
-      setChat((prev) => ({
-        ...prev,
-        chatMembers: [...prev.chatMembers, { user: userToAdd }],
-      }));
+      // re-fetch the full chat so state stays in sync
+      const updatedChat = await getChatById(chat.id);
+      setChat(updatedChat);
 
       setShowUserSearch(false);
 
@@ -153,7 +161,18 @@ export default function ChatMessages() {
   return (
     <section className={styles.chatMessagesSection}>
       <div className={styles.chatHeader}>
-        <h2>{getChatName()}</h2>
+        <div className={styles.chatHeaderMembers}>
+          <h2>{getChatName()}</h2>
+          <div className={styles.chatMembers}>
+            {(chat.isGroup || isCustomNamed) &&
+              otherMembers?.map((member, index) => (
+                <span key={member.id}>
+                  {member.displayName}
+                  {index < otherMembers.length - 1 ? ", " : ""}
+                </span>
+              ))}
+          </div>
+        </div>
 
         <div className={styles.chatHeaderControls}>
           <Button size="sm" onClick={toggleEdit}>

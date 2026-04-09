@@ -4,7 +4,6 @@
   padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   color: var(--white);
 }
 
@@ -12,6 +11,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.chatHeaderMembers {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chatMembers {
+  display: flex;
+  gap: 8px;
 }
 
 .chatHeader h2 {
@@ -30,6 +40,7 @@
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  padding-top: 40px;
 }
 
 .messageContainer {
