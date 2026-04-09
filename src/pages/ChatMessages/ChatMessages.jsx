@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
+import UserSearch from "../../components/UserSearch/UserSearch.jsx";
 import Button from "../../components/Button/Button.jsx";
 import styles from "./ChatMessages.module.css";
 import sendIcon from "../../icons/send.svg";
-import { getChatById } from "../../api/chats.js";
-import { sendMessage } from "../../api/chats.js";
+import {
+  getChatById,
+  editChat,
+  addUserToChat,
+  sendMessage,
+  leaveChat,
+} from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
 
 export default function ChatMessages() {
@@ -15,6 +21,8 @@ export default function ChatMessages() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const [showUserSearch, setShowUserSearch] = useState(false);
 
   useEffect(() => {
     async function load() {
@@ -32,6 +40,8 @@ export default function ChatMessages() {
 
     load();
   }, [chatId]);
+
+  const navigate = useNavigate();
 
   function getSender(message) {
     return chat.chatMembers.find((m) => m.user.id === message.senderId)?.user;
@@ -78,11 +88,54 @@ export default function ChatMessages() {
     }
   }
 
-  function toggleEdit() {}
+  async function toggleEdit() {
+    const newName = prompt("Enter new chat name:", chat.name || "");
 
-  function addMember() {}
+    if (!newName?.trim()) return;
 
-  function leaveChat() {}
+    try {
+      const updated = await editChat(chat.id, newName);
+
+      setChat((prev) => ({
+        ...prev,
+        name: updated.name,
+      }));
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function addMember() {
+    setShowUserSearch(true);
+  }
+
+  async function handleAddUser(userToAdd) {
+    try {
+      await addUserToChat(chat.id, userToAdd.id);
+
+      setChat((prev) => ({
+        ...prev,
+        chatMembers: [...prev.chatMembers, { user: userToAdd }],
+      }));
+
+      setShowUserSearch(false);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function leave() {
+    const confirmLeave = confirm("Are you sure you want to leave this chat?");
+    if (!confirmLeave) return;
+
+    try {
+      await leaveChat(chat.id);
+
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   if (loading) return <div>Loading...</div>;
   if (!chat) return <div>Chat not found</div>;
@@ -101,11 +154,18 @@ export default function ChatMessages() {
             Add Member
           </Button>
 
-          <Button size="sm" variant="danger" onClick={leaveChat}>
+          <Button size="sm" variant="danger" onClick={leave}>
             Leave Chat
           </Button>
         </div>
       </div>
+
+      {showUserSearch && (
+        <UserSearch
+          selectedUsers={chat.chatMembers.map((m) => m.user)}
+          onSelectUser={handleAddUser}
+        />
+      )}
 
       <div className={styles.messagesContainer}>
         {messages.map((msg) => {
