@@ -6,10 +6,12 @@ import { createChat } from "../../api/chats.js";
 import Button from "../../components/Button/Button.jsx";
 import UserSearch from "../../components/UserSearch/UserSearch.jsx";
 import defaultAvatar from "../../icons/account-circle.svg";
+import { useChats } from "../../context/useChats.js";
 
 export default function CreateChat() {
   const navigate = useNavigate();
   // const { user } = useAuth();
+  const { fetchChats } = useChats();
 
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [name, setName] = useState("");
@@ -38,6 +40,8 @@ export default function CreateChat() {
         userIds: selectedUsers.map((u) => u.id),
         name: selectedUsers.length > 1 ? name : undefined,
       });
+
+      await fetchChats();
 
       navigate(`/chats/${chat.id}`);
     } catch (err) {
