@@ -1,32 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router";
 import styles from "./Navbar.module.css";
 import AccountContainer from "../AccountContainer/AccountContainer";
 import plusIcon from "../../icons/plus-circle-outline.svg";
 import groupAvatar from "../../icons/account-group.svg";
 import defualtAvatar from "../../icons/account-circle.svg";
-import { getChats } from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
+import { useChats } from "../../context/useChats.js";
 
 export default function Navbar() {
   const { user } = useAuth();
-  const [chats, setChats] = useState([]);
-  const [nextCursor, setNextCursor] = useState(null);
-  const [loadingMore, setLoadingMore] = useState(false);
+  const {
+    chats,
+    setChats,
+    fetchChats,
+    nextCursor,
+    setNextCursor,
+    loadingMore,
+    setLoadingMore,
+  } = useChats();
 
   useEffect(() => {
-    async function loadChats() {
-      try {
-        const res = await getChats();
-        setChats(res.chats || []);
-        setNextCursor(res.nextCursor);
-      } catch (err) {
-        console.error(err);
-      }
+    if (user) {
+      fetchChats();
     }
-
-    loadChats();
-  }, [user]);
+  }, [user, fetchChats]);
 
   const loadMoreChats = async () => {
     if (!nextCursor || loadingMore) return;
@@ -34,7 +32,7 @@ export default function Navbar() {
     try {
       setLoadingMore(true);
 
-      const res = await getChats(nextCursor);
+      const res = await fetchChats(nextCursor);
 
       setChats((prev) => [...prev, ...res.chats]);
       setNextCursor(res.nextCursor);

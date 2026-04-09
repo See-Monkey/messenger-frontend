@@ -12,6 +12,7 @@ import {
   leaveChat,
 } from "../../api/chats.js";
 import { useAuth } from "../../context/useAuth.js";
+import { useChats } from "../../context/useChats.js";
 
 export default function ChatMessages() {
   const { chatId } = useParams();
@@ -42,6 +43,7 @@ export default function ChatMessages() {
   }, [chatId]);
 
   const navigate = useNavigate();
+  const { fetchChats } = useChats();
 
   function getSender(message) {
     return chat.chatMembers.find((m) => m.user.id === message.senderId)?.user;
@@ -80,6 +82,8 @@ export default function ChatMessages() {
       const real = await sendMessage(chatId, input);
 
       setMessages((prev) => prev.map((m) => (m.id === tempId ? real : m)));
+
+      await fetchChats();
     } catch (err) {
       console.error(err);
 
@@ -100,6 +104,8 @@ export default function ChatMessages() {
         ...prev,
         name: updated.name,
       }));
+
+      await fetchChats();
     } catch (err) {
       console.error(err);
     }
@@ -119,6 +125,8 @@ export default function ChatMessages() {
       }));
 
       setShowUserSearch(false);
+
+      await fetchChats();
     } catch (err) {
       console.error(err);
     }
@@ -130,6 +138,8 @@ export default function ChatMessages() {
 
     try {
       await leaveChat(chat.id);
+
+      await fetchChats();
 
       navigate("/");
     } catch (err) {

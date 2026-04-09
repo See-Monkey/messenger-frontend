@@ -6,6 +6,7 @@ import "./reset.css";
 
 import AppRoutes from "./routes/AppRoutes.jsx";
 import { AuthProvider } from "./context/AuthProvider.jsx";
+import { ChatProvider } from "./context/ChatProvider.jsx";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,9 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <RouterProvider router={AppRoutes} />
+        <ChatProvider>
+          <RouterProvider router={AppRoutes} />
+        </ChatProvider>
       </AuthProvider>
     </QueryClientProvider>
   </StrictMode>,
