@@ -1,3 +1,5 @@
+import { DEFAULT_THEME } from "../../theme.js";
+import ColorPicker from "../../components/HexColorPicker/ColorPicker.jsx";
 import { useState } from "react";
 import { useAuth } from "../../context/useAuth.js";
 import { useNavigate } from "react-router";
@@ -12,7 +14,7 @@ export default function Register() {
     username: "",
     displayName: "",
     avatarUrl: "",
-    themeColor: "",
+    themeColor: DEFAULT_THEME,
     password: "",
     confirmPassword: "",
   });
@@ -78,11 +80,11 @@ export default function Register() {
 
         <label>
           Theme Color:
-          <input
-            name="themeColor"
-            type="string"
-            value={form.themeColor}
-            onChange={handleChange}
+          <ColorPicker
+            color={form.themeColor}
+            onChange={(color) =>
+              setForm((prev) => ({ ...prev, themeColor: color }))
+            }
           />
         </label>
 

@@ -58,6 +58,7 @@
   width: 54px;
   border-radius: 9999px;
   padding: 2px;
+  object-fit: cover;
 }
 
 .messageContent {

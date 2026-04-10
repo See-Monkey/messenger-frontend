@@ -1,7 +1,3 @@
-- reusable truncate text helper function
-
-USER SEARCH
-
 NAVBAR
 
 - collapsible navbar
@@ -15,18 +11,21 @@ CHAT MESSAGES
 - add user allow toggle closed
 - leave chat with confirm modal
 - truncate too-long chat name in header
+- add chat message when adding user to group or user leaves
 
 CREATE CHAT
 
 ACCOUNT
 
-- center success messages
-- color picker on Account & Register
-
 HOME PAGE
 
 - info about the app features
 - screenshots
+
+USER PROFILE
+
+- create
+- style
 
 OTHER
 

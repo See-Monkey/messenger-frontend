@@ -1,5 +1,7 @@
+import { DEFAULT_THEME } from "../../theme.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import ColorPicker from "../../components/HexColorPicker/ColorPicker.jsx";
 import {
   getMe,
   updateMe,
@@ -187,10 +189,11 @@ export default function Account() {
           <div>
             <label>
               Theme Color :
-              <input
-                name="themeColor"
-                value={form.themeColor}
-                onChange={handleChange}
+              <ColorPicker
+                color={form.themeColor || DEFAULT_THEME}
+                onChange={(color) =>
+                  setForm((prev) => ({ ...prev, themeColor: color }))
+                }
               />
             </label>
           </div>

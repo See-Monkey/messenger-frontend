@@ -37,8 +37,10 @@ export default function Navbar() {
 
       const res = await fetchChats(nextCursor);
 
+      if (!res || !res.chats) return; // <-- FIX
+
       setChats((prev) => [...prev, ...res.chats]);
-      setNextCursor(res.nextCursor);
+      setNextCursor(res.nextCursor ?? null);
     } catch (err) {
       console.error(err);
     } finally {
@@ -48,6 +50,8 @@ export default function Navbar() {
 
   const handleScroll = (e) => {
     const el = e.target;
+
+    if (el.scrollHeight <= el.clientHeight) return;
 
     const nearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 50;
 
