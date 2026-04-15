@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../context/useAuth.js";
+import truncateText from "../../functions/truncateText.js";
 import styles from "./AccountContainer.module.css";
 import cog from "../../icons/cog.svg";
 
@@ -48,7 +49,7 @@ export default function AccountContainer() {
 
         {/* Display name */}
         <p className={styles.displayName}>
-          {user?.displayName || user?.username}
+          {truncateText(user?.displayName || user?.username, 20)}
         </p>
       </div>
 

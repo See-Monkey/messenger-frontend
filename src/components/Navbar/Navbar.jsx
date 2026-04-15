@@ -7,6 +7,7 @@ import groupAvatar from "../../icons/account-group.svg";
 import defualtAvatar from "../../icons/account-circle.svg";
 import { useAuth } from "../../context/useAuth.js";
 import { useChats } from "../../context/useChats.js";
+import truncateText from "../../functions/truncateText.js";
 
 export default function Navbar() {
   const { user } = useAuth();
@@ -96,9 +97,11 @@ export default function Navbar() {
 
             const lastMessage = chat.messages?.[0];
 
-            const preview = lastMessage?.deletedAt
+            const rawPreview = lastMessage?.deletedAt
               ? "Message deleted"
               : lastMessage?.content || "";
+
+            const preview = truncateText(rawPreview, 52);
 
             return (
               <NavLink
@@ -121,7 +124,9 @@ export default function Navbar() {
                   className={styles.chatAvatar}
                 />
                 <div className={styles.chatContent}>
-                  <div className={styles.chatLabel}>{label}</div>
+                  <div className={styles.chatLabel}>
+                    {truncateText(label, 24)}
+                  </div>
                   {preview && (
                     <div className={styles.chatPreview}>{preview}</div>
                   )}

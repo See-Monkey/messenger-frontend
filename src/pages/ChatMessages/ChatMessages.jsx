@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router";
 import UserSearch from "../../components/UserSearch/UserSearch.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -30,6 +30,8 @@ export default function ChatMessages() {
   const navigate = useNavigate();
   const { fetchChats } = useChats();
 
+  const messagesEndRef = useRef(null);
+
   const otherMembers = chat?.chatMembers
     .filter((m) => m.user.id !== user.id)
     .map((m) => m.user);
@@ -55,6 +57,14 @@ export default function ChatMessages() {
 
     load();
   }, [chatId]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  function scrollToBottom() {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }
 
   function getSender(message) {
     return chat.chatMembers.find((m) => m.user.id === message.senderId)?.user;
@@ -258,6 +268,8 @@ export default function ChatMessages() {
             </div>
           );
         })}
+
+        <div ref={messagesEndRef} />
       </div>
 
       <form onSubmit={handleSend} className={styles.messageForm}>

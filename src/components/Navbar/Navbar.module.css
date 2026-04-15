@@ -40,6 +40,7 @@
   border-radius: 6px;
   text-decoration: none;
   color: var(--white);
+  max-width: 284px;
 }
 
 .newChatBtn {
@@ -77,6 +78,15 @@
   background-color: var(--silver);
   border-radius: 9999px;
   padding: 1px;
+}
+
+.chatLabel {
+  font-weight: 600;
+  color: var(--platinum);
+}
+
+.chatPreview {
+  color: var(--steel);
 }
 
 .chatsContainer a.active {
