@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import UserSearch from "../../components/UserSearch/UserSearch.jsx";
 import Button from "../../components/Button/Button.jsx";
+import defualtAvatar from "../../icons/account-circle.svg";
 import styles from "./ChatMessages.module.css";
 import sendIcon from "../../icons/send.svg";
 import {
@@ -59,6 +60,24 @@ export default function ChatMessages() {
     return chat.chatMembers.find((m) => m.user.id === message.senderId)?.user;
   }
 
+  function renderSystemMessage(msg) {
+    switch (msg.systemType) {
+      case "USER_ADDED":
+        return `${msg.meta?.addedBy?.displayName || "Someone"} added ${
+          msg.meta?.user?.displayName || "someone"
+        }`;
+
+      case "USER_LEFT":
+        return `${msg.meta?.user?.displayName || "Someone"} left the chat`;
+
+      case "CHAT_RENAMED":
+        return `${msg.meta?.changedBy?.displayName || "Someone"} renamed the chat to "${msg.meta?.newName}"`;
+
+      default:
+        return "System event";
+    }
+  }
+
   function getChatName() {
     if (!chat) return "";
 
@@ -108,12 +127,11 @@ export default function ChatMessages() {
     if (!newName?.trim()) return;
 
     try {
-      const updated = await editChat(chat.id, newName);
+      await editChat(chat.id, newName);
+      const updatedChat = await getChatById(chat.id);
 
-      setChat((prev) => ({
-        ...prev,
-        name: updated.name,
-      }));
+      setChat(updatedChat);
+      setMessages([...updatedChat.messages].reverse());
 
       await fetchChats();
     } catch (err) {
@@ -132,6 +150,7 @@ export default function ChatMessages() {
       // re-fetch the full chat so state stays in sync
       const updatedChat = await getChatById(chat.id);
       setChat(updatedChat);
+      setMessages([...updatedChat.messages].reverse());
 
       setShowUserSearch(false);
 
@@ -199,8 +218,18 @@ export default function ChatMessages() {
 
       <div className={styles.messagesContainer}>
         {messages.map((msg) => {
-          const sender = getSender(msg);
+          if (msg.type === "SYSTEM") {
+            return (
+              <div className={styles.systemMessage}>
+                <p>{renderSystemMessage(msg)}</p>
+                <p className={styles.systemDate}>
+                  {formatMessageDate(msg.createdAt)}
+                </p>
+              </div>
+            );
+          }
 
+          const sender = getSender(msg);
           const isOwnMessage = msg.senderId === user.id;
 
           return (
@@ -211,10 +240,10 @@ export default function ChatMessages() {
               }`}
             >
               <img
-                src={sender.avatarUrl}
+                src={sender?.avatarUrl || defualtAvatar}
                 alt="avatar"
                 className={styles.avatar}
-                style={{ backgroundColor: sender.themeColor }}
+                style={{ backgroundColor: sender?.themeColor || "#f8f9fa" }}
               />
 
               <div className={styles.messageContent}>

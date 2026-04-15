@@ -33,6 +33,17 @@
   gap: 12px;
 }
 
+.systemMessage {
+  display: flex;
+  gap: 16px;
+  color: var(--aluminum);
+  padding-left: 90px;
+}
+
+.systemDate {
+  color: var(--slate);
+}
+
 .messagesContainer {
   display: flex;
   flex-direction: column;
