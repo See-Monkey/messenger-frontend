@@ -53,6 +53,7 @@
   min-height: 0;
   overflow-y: auto;
   padding-top: 40px;
+  margin: 12px 0;
 }
 
 .messageContainer {

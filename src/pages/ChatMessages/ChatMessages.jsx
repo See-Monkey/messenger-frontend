@@ -230,7 +230,7 @@ export default function ChatMessages() {
         {messages.map((msg) => {
           if (msg.type === "SYSTEM") {
             return (
-              <div className={styles.systemMessage}>
+              <div className={styles.systemMessage} key={msg.id}>
                 <p>{renderSystemMessage(msg)}</p>
                 <p className={styles.systemDate}>
                   {formatMessageDate(msg.createdAt)}
