@@ -9,9 +9,7 @@ CHAT MESSAGES
 - paginate messages \*
 - edit chat name in toggled input
 - add user allow toggle closed
-- leave chat with confirm modal
 - truncate too-long chat name in header with flex
-- add chat message when adding user to group or user leaves
 
 CREATE CHAT
 
@@ -30,3 +28,5 @@ OTHER
 
 - make completed seed file to populate example data
 - make guest login to view seed data
+
+- use WebSocket for real time updates

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router";
 import UserSearch from "../../components/UserSearch/UserSearch.jsx";
 import Button from "../../components/Button/Button.jsx";
+import ConfirmModal from "../../components/ConfirmModal/ConfirmModal.jsx";
 import defualtAvatar from "../../icons/account-circle.svg";
 import styles from "./ChatMessages.module.css";
 import sendIcon from "../../icons/send.svg";
@@ -24,6 +25,8 @@ export default function ChatMessages() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const [showUserSearch, setShowUserSearch] = useState(false);
 
@@ -170,18 +173,21 @@ export default function ChatMessages() {
     }
   }
 
-  async function leave() {
-    const confirmLeave = confirm("Are you sure you want to leave this chat?");
-    if (!confirmLeave) return;
+  function leave() {
+    setShowConfirm(true);
+  }
 
+  async function handleConfirmLeave() {
     try {
       await leaveChat(chat.id);
 
       await fetchChats();
-
       navigate("/");
     } catch (err) {
       console.error(err);
+    } finally {
+      setShowConfirm(false);
+      false;
     }
   }
 
@@ -284,6 +290,17 @@ export default function ChatMessages() {
           <img src={sendIcon} alt="send" />
         </button>
       </form>
+
+      <ConfirmModal
+        isOpen={showConfirm}
+        message="Are you sure you want to leave this chat?"
+        confirmText="Leave Chat"
+        onConfirm={handleConfirmLeave}
+        onCancel={() => {
+          setShowConfirm(false);
+          false;
+        }}
+      />
     </section>
   );
 }

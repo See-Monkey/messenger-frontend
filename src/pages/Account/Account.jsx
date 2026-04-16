@@ -274,6 +274,7 @@ export default function Account() {
           </Button>
           {deleteError && <div>{deleteError}</div>}
         </div>
+
         <ConfirmModal
           isOpen={showConfirm}
           message="Are you sure you want to delete your account?"
